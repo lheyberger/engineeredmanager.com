@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Entities</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>Entities</h1>
+		<h2>A lightweight entity-component system - Part 2</h2>
+	</header>
+	<p>This is the second article about an Entity / Component proof of concept I've been developing.
+If you haven't done it already, I suggest you read the article about <a href="./components.html">Components</a> before reading this one.</p>
+<p>Entities shouldn't be more complicated than components.
+They actually just provide a logical way of regrouping components.</p>
+<p>They are implemented as python dictionaries and created using a factory method:</p>
+<pre><code>def Entity(ID = uuid.uuid4()):
+    return {
+        'ID': ID,
+    }
+
+&gt;&gt;&gt; e = Entity()
+&gt;&gt;&gt; pprint(e)
+{
+    'ID': UUID('fc9f593d-9b99-4eba-abd6-a2309bbb84f0')
+}
+</code></pre>
+<p>Attaching a component is easy:</p>
+<pre><code>&gt;&gt;&gt; p = Position()
+&gt;&gt;&gt; attach(e, p)
+&gt;&gt;&gt; pprint(e)
+{
+    'ID': UUID('fc9f593d-9b99-4eba-abd6-a2309bbb84f0'),
+    'components': {
+        '__main__::Position': [
+            {'_type': 'Module::Position', 'x': 0.0, 'y': 0.0, 'z': 0.0}
+        ]
+    }
+}
+</code></pre>
+<p>Detaching is simple as well:</p>
+<pre><code>&gt;&gt;&gt; detach(e, p)
+&gt;&gt;&gt; pprint(e)
+{
+    'ID': UUID('fc9f593d-9b99-4eba-abd6-a2309bbb84f0'),
+    'components': {
+        'Module::Position': []
+    }
+}
+</code></pre>
+<p>To keep good performances when attaching and detaching lot of components, cleanup is left to another function that can be called at the end of the update:</p>
+<pre><code>&gt;&gt;&gt; cleanup(e)
+&gt;&gt;&gt; pprint(e)
+{
+    'ID': UUID('fc9f593d-9b99-4eba-abd6-a2309bbb84f0')
+}
+</code></pre>
+<p>There's no restriction concerning the number of components of the same type you can attach to an entity.
+As previously said, entities are just bags of components and they don't have any logic.</p>
+<p>Since entities and components both are simple dictionaries, they can be serialized and unserialized easily.</p>
+<p>In the next <a href="./systems.html">entry</a>, I talk about <em>systems</em>.</p>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/entities.html">Permalink</a>
+			<time datetime="2012-12-09">December 09, 2012</time>
+			<time datetime="2013-08-04">(last edit on August 04, 2013)</time>
+		</p>
+		
+		<p>
+			<a href="archives.html#programming">programming</a> <a href="archives.html#python">python</a> <a href="archives.html#components">components</a>
+		</p>
+		
+		
+		<nav>
+			<h1>Previous posts</h1>
+			<ul>
+			
+				<li><a href="components.html">Components</a></li>
+			
+				<li><a href="markov.html">Generating names using Markov chains</a></li>
+			
+				<li><a href="notebooks.html">Becoming a notebook geek</a></li>
+			
+				<li><a href="about.html">About</a></li>
+			
+				<li><a href="underthehood.html">Under the hood</a></li>
+			
+			</ul>
+		</nav>
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>

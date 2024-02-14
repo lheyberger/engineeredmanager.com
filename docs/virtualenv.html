@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>virtualenv + SublimeText</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>virtualenv + SublimeText</h1>
+		<h2>Integrating virtualenv in SublimeText's build system</h2>
+	</header>
+	<p>When programming in python, it's a good practice to use <a href="http://www.virtualenv.org">virtualenv</a> to clearly separate the dependencies between different projects. However, it's not always straightforward to integrate <em>virtualenv</em> within your current workflow.</p>
+<p>I like to code using <a href="http://www.sublimetext.com">SublimeText2</a> because it fits my needs to have both a powerful code editor, and a simple text editor to write markdown, but hitting <em>ctrl + shift + b</em> while editing a python file will execute it using the python install that comes first in your $PATH environment variable, which is obviously not what you want.</p>
+<p>A good way to integrate <em>virtualenv</em> with a <em>SublimeText2</em> is to create a project file that contains a custom build system that will run your scripts using your <em>virtualenv</em>'s python.</p>
+<pre><code>{
+  "folders":
+  [
+    {
+      "name": "Project",
+      "path": "."
+    }
+  ],
+  "build_systems":
+  [
+    {
+      "name": "Python virtualenv",
+      "selector": "source.python",
+      "cmd": ["$project_path/env/bin/python", "-u", "$file"]
+    }
+  ]
+}
+</code></pre>
+<p>That's it.</p>
+<p>Your script will now be executed with whatever python version you used to create your virtual environment.</p>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/virtualenv.html">Permalink</a>
+			<time datetime="2013-07-04">July 04, 2013</time>
+			
+		</p>
+		
+		<p>
+			<a href="archives.html#programming">programming</a> <a href="archives.html#python">python</a>
+		</p>
+		
+		
+		<nav>
+			<h1>Previous posts</h1>
+			<ul>
+			
+				<li><a href="parameters.html">Parameters' validation</a></li>
+			
+				<li><a href="eventtester.html">Event tester</a></li>
+			
+				<li><a href="safe.html">Safe LinQ queries</a></li>
+			
+				<li><a href="minimalism.html">Minimalism</a></li>
+			
+				<li><a href="entities.html">Entities</a></li>
+			
+			</ul>
+		</nav>
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>

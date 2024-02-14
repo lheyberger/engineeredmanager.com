@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Scrapbook</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>Scrapbook</h1>
+		<h2>A copy/paste heaven</h2>
+	</header>
+	<h1>Blog post ideas</h1>
+<ul>
+<li>using postsharp</li>
+<li>dependency injection / testability using MEF</li>
+<li>refactoring existing codebases</li>
+<li>OpticsPro 10</li>
+<li>A/B testing in mobile applications</li>
+</ul>
+<h1>Artemis</h1>
+<h2>Entities, Components, Systems</h2>
+<ul>
+<li>Entities as bags of component</li>
+<li>Components as bags of data</li>
+<li>Systems as a way to work on components</li>
+<li>Component (c data structure) + System (c function) = Component as a class / object</li>
+<li>Entities, Components and Systems must be prioritized</li>
+<li>Components should be testable separately (no need for a scheduler)</li>
+<li>Entities should be testable separately (no need for a scheduler)</li>
+</ul>
+<p>example implementation:</p>
+<pre><code>entity = {
+    components : {
+        ComponentSystem_1 : [ Component_1, Component_1, Component_1, ],
+        ComponentSystem_2 : [ Component_2, Component_2, Component_2, ],
+        ComponentSystem_3 : [ Component_3, Component_3, Component_3, ],
+    }
+}
+</code></pre>
+<h2>Scheduler</h2>
+<ul>
+<li>entities / components / systems should not be aware of the scheduler</li>
+<li>entities / components / systems should not depend on the implementation (threads, coroutines, subprocess, remote calls, whatever.)</li>
+<li>Scheduler should work on lot of entities / components / systems</li>
+<li>entities should not have to rely on the scheduler to synchronize (they should use a priority mechanism)</li>
+</ul>
+<h1>Automatic folder sorter</h1>
+<p>facts:</p>
+<ul>
+<li>a download is typically a folder containing stuff</li>
+<li>it may match a release whatever its type is</li>
+</ul>
+<p>process:</p>
+<ol>
+<li>identify the content of the folder</li>
+<li>move the folder to the right destination</li>
+<li>eventually clean the content of the folder</li>
+</ol>
+<h1>About notebooks</h1>
+<h2>First results</h2>
+<p>Before starting this process, I merely only used a pen to sign checks to pay the rent and I was a great fan of taking notes on my smart phone.
+For a computer scientist, I would have imagine the transition to be painful and boring, but it was actually surprisingly fun.</p>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/scrapbook.html">Permalink</a>
+			<time datetime="1970-01-01">January 01, 1970</time>
+			
+		</p>
+		
+		<p>
+			<a href="archives.html#draft">draft</a>
+		</p>
+		
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>

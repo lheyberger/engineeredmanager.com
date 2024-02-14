@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Generating names using Markov chains</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>Generating names using Markov chains</h1>
+		<h2>Yet Another markov chains article</h2>
+	</header>
+	<p>I've always been interested in procedural generation.
+It's the kind of computer sciences area that makes you think that everything is possible without investing to much time on building assets.</p>
+<p>Random name generation is probably the most intuitive and easiest way to start.</p>
+<p>You will probably find countless random name generators using <a href="https://wikipedia.org/wiki/Markov_chain">Markov chains</a> or other techniques, anyways, here's another one... :)</p>
+<h1>Introduction to Markov chains</h1>
+<p>Citing wikipedia:</p>
+<blockquote>
+<p>A Markov chain, named after Andrey Markov, is a mathematical system that undergoes transitions from one state to another, between a finite or countable number of possible states. It is a random process usually characterized as memoryless: the next state depends only on the current state and not on the sequence of events that preceded it. This specific kind of "memorylessness" is called the Markov property.</p>
+</blockquote>
+<p>The thing about Markov chains is that they are very simple to implement, and you have a nice result very quickly.</p>
+<h1>Feeding the beast</h1>
+<p>Markov chains are great at generating names that sound real because they are based on real data.
+The best way to start is to feed the program with a huge list of real world words, like common first names, god names, or town names for example.
+The more words, the better.</p>
+<p>Internally, the program uses a transition table to generate the names.
+This is the transition table for the name "John":</p>
+<pre><code>{
+    None: ['jo'],
+    'jo': ['h'],
+    'oh': ['n'],
+    'hn': [None]
+}
+</code></pre>
+<p>The word is sliced in group of 2 letters:</p>
+<pre><code>[ "jo", "oh", "hn" ]
+</code></pre>
+<p>and each of this group gets a transition to the letter right next to it.
+The "None" values indicate the start and the beginning transitions.</p>
+<p>If you add "Joseph" as a second word to the transitions table, it would be sliced in:</p>
+<pre><code>[ "jo", "os", "se", "ep", "ph" ]
+</code></pre>
+<p>and the updated transition table would be:</p>
+<pre><code>{
+    None: ['jo', 'jo'],
+    'jo': ['h', 's'],
+    'oh': ['n'],
+    'hn': [None],
+    'os': ['e'],
+    'se': ['p'],
+    'ep': ['h'],
+    'ph': [None]
+}
+</code></pre>
+<p>There are now two ways of starting the chain, though they are the same, "jo" and "jo", as well as two ways of ending the chain, "hn" and "ph".</p>
+<h1>Generating names</h1>
+<p>Given the previous transition table, starting to generate a random name will look like this:</p>
+<ul>
+<li>Select a random starting transition between "jo" and "jo". The word is <strong>"jo"</strong>.</li>
+<li>From "jo", select the next transition between "h" and "s". The word could either be "jos" or "joh". Let's say it picked <strong>"jos"</strong>.</li>
+<li>From "os", select the next transition. No choice here so it gives <strong>"jose"</strong>.</li>
+<li>Proceed until you pick an end transition. You will now have your word <strong>"joseph"</strong>.</li>
+</ul>
+<p>Simple.</p>
+<p>You can control the output by providing a maximum lenght to prevent generated names to be too long.
+The more you will encounter a transition when parsing the names, the more it's likely to be picked when generating a random word.
+The main thing here is to provide a big enough list so that random generated names will <em>sound</em> like the names in the list.</p>
+<p>Given a list that contains the names of gods from different origins, running the algorithm 10 times gives:</p>
+<ul>
+<li>Wakaman</li>
+<li>Midhrbogdo</li>
+<li>Taizokamma</li>
+<li>Myr</li>
+<li>Jun</li>
+<li>Hodlun</li>
+<li>Kolano-gi</li>
+<li>Machine</li>
+<li>Sar'e</li>
+<li>Avar-ko-ka</li>
+</ul>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/markov.html">Permalink</a>
+			<time datetime="2012-11-15">November 15, 2012</time>
+			
+		</p>
+		
+		<p>
+			<a href="archives.html#programming">programming</a> <a href="archives.html#procedural">procedural</a> <a href="archives.html#python">python</a>
+		</p>
+		
+		
+		<nav>
+			<h1>Previous posts</h1>
+			<ul>
+			
+				<li><a href="notebooks.html">Becoming a notebook geek</a></li>
+			
+				<li><a href="about.html">About</a></li>
+			
+				<li><a href="underthehood.html">Under the hood</a></li>
+			
+				<li><a href="scrapbook.html">Scrapbook</a></li>
+			
+			</ul>
+		</nav>
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>

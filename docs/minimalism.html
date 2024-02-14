@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Minimalism</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>Minimalism</h1>
+		<h2>Random thoughts on minimalism in a programmer's world</h2>
+	</header>
+	<p>A famous quote from <a href="http://wikipedia.org/wiki/Antoine_de_Saint-Exupéry">Antoine de Saint-Exupéry</a> says that:</p>
+<blockquote>
+<p>A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.</p>
+</blockquote>
+<p>If the implication of minimalism in art is rather obvious, I've been liking the idea of trying to find minimalism in my everyday life, and especially in coding.</p>
+<p>Let me share a few examples with you.</p>
+<h1>Minimalism in design</h1>
+<p>The first example is the one that is right in front of your eyes.</p>
+<p>While building this <a href="./about.html">this website</a>, I've tried to keep everything as small and minimalist as possible, starting with the script that generates it.
+The python script is about 150 lines (plus a few external files) and goes through all the articles and generates the website, renders the templates and generate the atom feed.</p>
+<p>Writing new articles is only a matter of creating a new <a href="http://wikipedia.org/wiki/Markdown">Markdown</a> file containing a <a href="http://wikipedia.org/wiki/YAML">Yaml</a> header.</p>
+<p>If I want to re-generate the whole website, I only hit ctrl + shit + B in my <a href="http://www.sublimetext.com">text editor</a> and the python script does all the job.</p>
+<p>If I need to backup the website, a small .zip archive will easily do the job.</p>
+<p>Having a static website is not only cool when you edit it, but it's also very easy to publish.
+Any web server will do the job.
+You can even <em>publish</em> your website using Dropbox and something like <a href="http://www.site44.com">site 44</a>.</p>
+<p>The HTML and the CSS has also been kept to their minimalistic state:
+Very few colors (currently it could also be summed up to a few shades of gray + a hint color) and as few HTML tags as possible.</p>
+<h1>Minimalism in tools</h1>
+<p>Since a few years, I've also been interested in finding minimalism in the tools I use.</p>
+<p>During the first year of my computer science degree, we learned the C language using only <a href="http://wikipedia.org/wiki/Emacs">Emacs</a> and <a href="http://wikipedia.org/wiki/Make_(software)">makefiles</a> and while at school, you were authorized to read your emails / newsgroup only if you used <a href="http://wikipedia.org/wiki/Pine_(email_client)">pine</a> or <a href="http://wikipedia.org/wiki/Mutt_(email_client)">mutt</a>.</p>
+<p>No graphical user interface allowed.</p>
+<p>Like most of us, I started using Visual Studio at the end of the scholarship. The first time I used it, it actually felt so powerful: projects, code completion, no more makefile writing. The paradise.</p>
+<p>One day I stumbled upon <a href="http://www.charlespetzold.com/etc/doesvisualstudiorotthemind.html">this article</a> and I really liked the whole concept even if I didn't fully understand what it was talking about (I was still discovering Visual Studio features like IntelliSense or the debugger).
+I eventually kept the last paragraph about "The Pure Pleasures of Pure Coding" somewhere in my head and for me and this concept started to make it's comeback a few months / years ago.</p>
+<p>After having used Visual Studio in a professional environment for a while with all the integrated tools like <em>better-IntelliSense-this</em>, <em>great-unit-test-framework-that</em> and having experienced <em>lag</em> while typing your code (yes, using Resharper makes your text editor lag), you really value the beauty and simplicity of a well designed code or text editor.</p>
+<p>Coming back to Emacs or Vim was a bit hard, especially in a windows environment, so I started to look at great alternatives.
+That's when I started to use <a href="http://wikipedia.org/wiki/SciTE">SCite</a>. I really appreciated the simplicity of the interface, without dropping powerful features and ease of use.
+I recently switched to <a href="http://www.sublimetext.com">SublimeText2</a> which is as powerful as SCite, and is packed with great integrated themes, a distraction-free mode, and a fancy the minimap.</p>
+<h1>Minimalist implementations</h1>
+<p>When I started my journey as a programmer I loved to write my C code as compact as possible.
+I wasn't helped by the constraint we had at school that was called <em>the norm</em> and that was automatically checked with a script:</p>
+<ul>
+<li>functions had to be less than 25 lines of code</li>
+<li>lines couldn't be more than 80 characters</li>
+<li>files had to contain a maximum of 5 public functions (you could go to 10 functions if they where static)</li>
+</ul>
+<p>Of course we slightly missed the point of even having a <em>norm</em> but a few years later, we realized that it should have led us to try to achieve better responsibility separation, and clearly splitting code between files.</p>
+<p>It was fun to write those very compact C functions at first, but an awful pain when you wanted to read your code a few weeks or months later.
+Those 1 letter variables were definitely not a good idea.</p>
+<h1>Closing thoughts</h1>
+<p>You've probably already heard this quote from "<a href="http://wikipedia.org/wiki/The_Elements_of_Programming_Style">The Elements of Programming Style</a>" by <a href="http://wikipedia.org/wiki/Brian_Kernighan">Kernighan</a> and Plauger:</p>
+<blockquote>
+<p>Don't comment bad code, rewrite it</p>
+</blockquote>
+<p>As true as it is, I found a principle that perfectly fits my state of mind while writing code:</p>
+<blockquote>
+<p>Write code in a way that the next person reading it will say: "I wouldn't have done better".</p>
+</blockquote>
+<p>Following this mantra has helped me write simpler, cleaner and more direct code, and I think that this is the true way of minimalism.</p>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/minimalism.html">Permalink</a>
+			<time datetime="2012-12-10">December 10, 2012</time>
+			<time datetime="2013-08-05">(last edit on August 05, 2013)</time>
+		</p>
+		
+		<p>
+			<a href="archives.html#workflow">workflow</a>
+		</p>
+		
+		
+		<nav>
+			<h1>Previous posts</h1>
+			<ul>
+			
+				<li><a href="entities.html">Entities</a></li>
+			
+				<li><a href="components.html">Components</a></li>
+			
+				<li><a href="markov.html">Generating names using Markov chains</a></li>
+			
+				<li><a href="notebooks.html">Becoming a notebook geek</a></li>
+			
+				<li><a href="about.html">About</a></li>
+			
+			</ul>
+		</nav>
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>

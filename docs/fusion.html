@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>HTML5 framework fusion</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>HTML5 framework fusion</h1>
+		<h2>Seamless HTML5 frameworks integration in your templates</h2>
+	</header>
+	<p>Today, lot of web developers are relying on HTML5 / CSS frameworks like Twitter's <a href="http://getbootstrap.com">Bootstrap</a> or its twin brother <a href="http://goratchet.com">ratchet</a>. Those frameworks are very good at tackling the most boring issues like browser compatibility, responsive designs and homogeneity.</p>
+<p>They sure are great at helping you start a web project very quickly but in my quest for <a href="./minimalism.html">minimalism</a>, there's one thing that annoys me a lot.</p>
+<h1>Before</h1>
+<p>Here's what I'm talking about:</p>
+<pre><code>&lt;header class="bar bar-nav"&gt;
+  &lt;h1 class="title"&gt;Title&lt;/h1&gt;
+&lt;/header&gt;
+</code></pre>
+<p>In this example, classes are used to define the look of the elements and how they will be styled by your framework.</p>
+<p>As far as I remember, the big deal about CSS was to separate the semantic content from the presentation, and it seems to me, that this kind of frameworks are totally destroying all the efforts spent to have clean, and minimalist HTML markups.</p>
+<h1>The bit</h1>
+<p>The idea is to use <a href="http://sass-lang.com">SASS</a> and its simple yet powerful <a href="http://sass-lang.com/guide">@extend</a> feature to "fuse" your favorite HTML5 framework with your beautiful markup.</p>
+<p>You'll probably need to rename the main css file of your framework ("framework.min.css" for example) to something a bit more SASS complient like "_framework.scss" because SASS doesn't support importing standard CSS files (if you try to import a standard CSS file, it will be translated to a standard CSS import clause, which is not what we want here).</p>
+<p>Then, all you have to do is to create your own SASS style containing something like:</p>
+<pre><code>/* style.scss */
+
+@import "_myframework";
+
+header {
+  @extend .bar;
+  @extend .bar-nav;
+}
+
+header h1 {
+    @extend .title;
+}
+</code></pre>
+<h1>After</h1>
+<p><em>Et voilà</em>, you can remove those intruding classes from your markup and end up with a beautiful HTML source like that:</p>
+<pre><code>&lt;header&gt;
+  &lt;h1&gt;Title&lt;/h1&gt;
+&lt;/header&gt;
+</code></pre>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/fusion.html">Permalink</a>
+			<time datetime="2014-03-07">March 07, 2014</time>
+			<time datetime="2014-03-10">(last edit on March 10, 2014)</time>
+		</p>
+		
+		<p>
+			<a href="archives.html#programming">programming</a> <a href="archives.html#web">web</a> <a href="archives.html#randombits">randombits</a>
+		</p>
+		
+		
+		<nav>
+			<h1>Previous posts</h1>
+			<ul>
+			
+				<li><a href="systems.html">Systems</a></li>
+			
+				<li><a href="darts.html">Throwing darts</a></li>
+			
+				<li><a href="instant.html">Going instant</a></li>
+			
+				<li><a href="splitapple.html">Splitting apples</a></li>
+			
+				<li><a href="virtualenv.html">virtualenv + SublimeText</a></li>
+			
+			</ul>
+		</nav>
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>

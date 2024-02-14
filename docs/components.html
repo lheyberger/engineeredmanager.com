@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Components</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>Components</h1>
+		<h2>A lightweight entity-component system - Part 1</h2>
+	</header>
+	<p>Entity-components systems seem to have been around for a few years now.
+I remember debating about it with co-workers back in 2007 and they were nothing new.
+For a long time, classic engines where inheritance-based and used complicated object oriented design to fulfill their needs.
+But it seems that the trend has quickly evolved in favor of Entities / Components architectures which allows for better code and data separation as well as better component re-usability.</p>
+<p>Let me share a few details about how the components are implemented in a proof of concept I've been developing as a pet project.
+I've tried to keep the design as <a href="./minimalism.html">minimalist</a> as possible.</p>
+<p>There can be potentially a great number of components running at the same time during the application's lifetime, so they must be very simple and lightweight.
+They are implemented using built-in python dictionaries and created by a factory method:</p>
+<pre><code>def Position(x = 0.0, y = 0.0, z = 0.0):
+    return {
+        'x': x,
+        'y': y,
+        'z': z
+    }
+
+&gt;&gt;&gt; p = Position()
+{'x': 0.0, 'y': 0.0, 'z': 0.0}
+</code></pre>
+<p>A decorator is used to add internal attributes to components such as their types:</p>
+<pre><code>@Component
+def Position(x = 0.0, y = 0.0, z = 0.0):
+    return {
+        'x': x,
+        'y': y,
+        'z': z
+    }
+
+&gt;&gt;&gt; p = Position()
+{'_type': 'Module::Position', 'x': 0.0, 'y': 0.0, 'z': 0.0}
+</code></pre>
+<p>And here is the decorator used to create components:</p>
+<pre><code>class Component(object):
+    def __init__(self, f):
+        self.f = f
+
+    def __call__(self, *args):
+        c = self.f(*args)
+        c['_type'] = '{0}::{1}'.format(self.f.__module__, self.f.__name__)
+        return c
+</code></pre>
+<p>In the next <a href="./entities.html">entry</a>, I introduce the entities, which are basically just bags of components.</p>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/components.html">Permalink</a>
+			<time datetime="2012-12-08">December 08, 2012</time>
+			<time datetime="2013-08-04">(last edit on August 04, 2013)</time>
+		</p>
+		
+		<p>
+			<a href="archives.html#programming">programming</a> <a href="archives.html#python">python</a> <a href="archives.html#components">components</a>
+		</p>
+		
+		
+		<nav>
+			<h1>Previous posts</h1>
+			<ul>
+			
+				<li><a href="markov.html">Generating names using Markov chains</a></li>
+			
+				<li><a href="notebooks.html">Becoming a notebook geek</a></li>
+			
+				<li><a href="about.html">About</a></li>
+			
+				<li><a href="underthehood.html">Under the hood</a></li>
+			
+				<li><a href="scrapbook.html">Scrapbook</a></li>
+			
+			</ul>
+		</nav>
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>

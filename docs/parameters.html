@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Parameters' validation</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>Parameters' validation</h1>
+		<h2>Using C# linq to achieve better readability</h2>
+	</header>
+	<p>In a large scale application, you often use some kind of <a href="http://wikipedia.org/wiki/Defensive_programming">defensive programming</a> techniques such as <a href="http://wikipedia.org/wiki/Secure_input_and_output_handling#Input_validation">input validation</a> to ensure that your method can run correctly and produce the desired output.</p>
+<p>This simple random bit of code provides you a clean and elegant way of validating that your collections are neither null nor empty.</p>
+<p>Bonus: It also works with strings.</p>
+<h1>Before</h1>
+<pre><code>MyClassConstructor(string name, IEnumerable&lt;int&gt; values)
+{
+  if (string.IsNullOrEmpty(name))
+  {
+    throw new ArgumentNullException("name");
+  }
+
+  if (values == null || values.Any() == false)
+  {
+     throw new ArgumentNullException("values");
+  }
+}
+</code></pre>
+<h1>The bit</h1>
+<pre><code>public static class Extensions
+{
+   public static bool IsNullOrEmpty&lt;T&gt;(this IEnumerable&lt;T&gt; collection)
+   {
+      return collection == null || collection.Any() == false;
+   }
+}
+</code></pre>
+<h1>After</h1>
+<pre><code>MyClassConstructor(string name, IEnumerable&lt;int&gt; values)
+{
+  if (name.IsNullOrEmpty())
+  {
+    throw new ArgumentNullException("name");
+  }
+
+  if (values.IsNullOrEmpty())
+  {
+     throw new ArgumentNullException("values");
+  }
+}
+</code></pre>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/parameters.html">Permalink</a>
+			<time datetime="2013-06-17">June 17, 2013</time>
+			<time datetime="2013-08-04">(last edit on August 04, 2013)</time>
+		</p>
+		
+		<p>
+			<a href="archives.html#programming">programming</a> <a href="archives.html#c#">c#</a> <a href="archives.html#randombits">randombits</a>
+		</p>
+		
+		
+		<nav>
+			<h1>Previous posts</h1>
+			<ul>
+			
+				<li><a href="eventtester.html">Event tester</a></li>
+			
+				<li><a href="safe.html">Safe LinQ queries</a></li>
+			
+				<li><a href="minimalism.html">Minimalism</a></li>
+			
+				<li><a href="entities.html">Entities</a></li>
+			
+				<li><a href="components.html">Components</a></li>
+			
+			</ul>
+		</nav>
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>

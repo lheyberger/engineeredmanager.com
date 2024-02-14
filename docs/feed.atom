@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title></title>
+    <link href="http://engineeredmanager.com/" rel="self" />
+    <id>urn:uuid:4f5a380a-d207-497f-b8e6-685226bc66ae</id>
+    <updated>2024-02-14T20:48:25Z</updated>
+
+    
+    <entry>
+        <title>HTML5 framework fusion</title>
+        <link href="http://engineeredmanager.com/fusion.html" />
+        <id>urn:uuid:ff95b514-cb36-3a83-bc32-344510a1fc08</id>
+        <updated>2014-03-07T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>Today, lot of web developers are relying on HTML5 / CSS frameworks like Twitter's <a href="http://getbootstrap.com">Bootstrap</a> or its twin brother <a href="http://goratchet.com">ratchet</a>. Those frameworks are very good at tackling the most boring issues like browser compatibility, responsive designs and homogeneity.</p>
+<p>They sure are great at helping you start a web project very quickly but in my quest for <a href="./minimalism.html">minimalism</a>, there's one thing that annoys me a lot.</p>
+<h1>Before</h1>
+<p>Here's what I'm talking about:</p>
+<pre><code>&lt;header class="bar bar-nav"&gt;
+  &lt;h1 class="title"&gt;Title&lt;/h1&gt;
+&lt;/header&gt;
+</code></pre>
+<p>In this example, classes are used to define the look of the elements and how they will be styled by your framework.</p>
+<p>As far as I remember, the big deal about CSS was to separate the semantic content from the presentation, and it seems to me, that this kind of frameworks are totally destroying all the efforts spent to have clean, and minimalist HTML markups.</p>
+<h1>The bit</h1>
+<p>The idea is to use <a href="http://sass-lang.com">SASS</a> and its simple yet powerful <a href="http://sass-lang.com/guide">@extend</a> feature to "fuse" your favorite HTML5 framework with your beautiful markup.</p>
+<p>You'll probably need to rename the main css file of your framework ("framework.min.css" for example) to something a bit more SASS complient like "_framework.scss" because SASS doesn't support importing standard CSS files (if you try to import a standard CSS file, it will be translated to a standard CSS import clause, which is not what we want here).</p>
+<p>Then, all you have to do is to create your own SASS style containing something like:</p>
+<pre><code>/* style.scss */
+
+@import "_myframework";
+
+header {
+  @extend .bar;
+  @extend .bar-nav;
+}
+
+header h1 {
+    @extend .title;
+}
+</code></pre>
+<h1>After</h1>
+<p><em>Et voilà</em>, you can remove those intruding classes from your markup and end up with a beautiful HTML source like that:</p>
+<pre><code>&lt;header&gt;
+  &lt;h1&gt;Title&lt;/h1&gt;
+&lt;/header&gt;
+</code></pre>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Throwing darts</title>
+        <link href="http://engineeredmanager.com/darts.html" />
+        <id>urn:uuid:d7c14da3-df53-3ece-b926-5db649a97d74</id>
+        <updated>2013-07-31T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p><em>The opinions expressed herein are my own and do not represent my (ex-)employer’s views in any way. Nothing posted here should be considered official or sanctioned by my (ex-)employer or any other organization I’m affiliated with.</em></p>
+<h1>The project</h1>
+<p>Right after the launch of <a href="http://wikipedia.org/wiki/SplitApple">SplitApple</a> we started to work on a darts throwing game for iOS, <a href="http://wikipedia.org/wiki/T-80_Darts">T-80 Darts</a>. The game was mainly developed by 2 programmers (including me) and 2 artists over a period of 7 months.</p>
+<h1>What went right</h1>
+<h2>Capitalizing on the work of SplitApple</h2>
+<p>During the development of T-80 Darts, we were still working on SplitApple to add more content and release a few updates. We clearly had in mind <a href="./splitapple.html">what went right and what went wrong</a> during the development, so we could be careful not to repeat the same errors.</p>
+<p>When we started the development of SplitApple, we already had a lot of assets that were ready, so the technical part lagged a bit behind. On the contrary, during the development of T-80 Darts, lot of technical parts were reused so we could take the time to do some cleanup and really think on how things should have been done while the graphical assets were produced.</p>
+<h2>Enhancing our internal scripting engine</h2>
+<p>While the artists were creating the assets, we enhanced a lot of the parts we reused from SplitApple, including:</p>
+<ul>
+<li>State machines</li>
+<li>UI scripting file &amp; configuration</li>
+<li><a href="./archives.html#components">Components</a> management</li>
+<li>Input management</li>
+</ul>
+<p>Almost everything we did in SplitApple was reworked to be more straightforward and more efficient. We had time to tackle a lot of the small technical issues we had on SplitApple and from a technical point of view, the game was <em>more mature</em>.</p>
+<h2>Providing more features</h2>
+<p>When we released SplitApple, we knew the game was designed to be done by 1 programmer and 1 artist, so we had to trim all the unnecessary features and limit the content to the strict minimum. We tried to improve that point for T-80 Darts and we succeeded in some way:</p>
+<ul>
+<li>The game implements the classic 01 games (301, 501 and 701) in addition to the less common <em>Around the clock</em> and <em>Cricket</em> modes.</li>
+<li>All game modes are available both in single player and versus.</li>
+</ul>
+<h2>"Packaging"</h2>
+<p>SplitApple was launched as a universal application with a starting price at €1,79. It was increased to €2,69 latter because we decided to <em>rebrand</em> the application as an HD version and release a special <em>SplitApple for iphone</em> version at €0,89 as well as a free version call <em>SplitApple Lite</em>.</p>
+<p>On the other hand, T-80 Darts' release plan was much clearer:</p>
+<ul>
+<li>T-80 Darts (iphone only version) released at €0,89</li>
+<li>T-80 Darts HD (universal version) released at €2,69</li>
+</ul>
+<h1>What went wrong</h1>
+<h2>Waste of resources</h2>
+<p>We were virtually a team about 2 times the size as the team that worked on SplitApple and even with that, T-80 Darts took longer to develop that SplitApple. For this kind of small games, development time is crucial, and you should release your games as fast as possible with the absolute minimum set of features required to make a game.</p>
+<h2>Lot of ideas dropped</h2>
+<p>When we were initially thinking about making a darts throwing game reusing as much from SpitApple as we could, we had a lot of ideas to try to improve the game. For example we wanted to have different kind of rules and each one of them would take place in a special environment, with a special player and a special target.</p>
+<p>The only one that actually made it to the final release was the irish pub.</p>
+<p>We also thought about adding in-app purchase to customize the look of the game (custom darts and targets) but this feature was also dropped.</p>
+<h2>Marketing &amp; Sales</h2>
+<p>The company only took care of creating a Facebook page dedicated for the game, so we decided to created both Twitter and Google+ pages to increase our <em>presence</em> as well as a Wikipedia page. Nothing else was really done to try to bring people to speak about the game. We knew we were not really releasing the killer game for iOS and we had the feeling that we didn't try all our possible to make it work.</p>
+<p>In the end, the game was far from being profitable with less than 15 000 users and 75 000 sessions played.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Going instant</title>
+        <link href="http://engineeredmanager.com/instant.html" />
+        <id>urn:uuid:9e99003c-9a84-3766-81de-a8c837a95b11</id>
+        <updated>2013-07-29T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>I've always loved photography. It probably comes from my artistic background when I studied fine arts at the university in my previous life (in this life, I studied computer sciences and become a true geek). When MKO Games <a href="./about.html">closed</a>, I joined <a href="http://dxo.com">DxO Labs</a>, a company working on image quality. Everyday at work, I try to enhance the windows version of Optics Pro, a software that does a pretty good job at <em>fixing</em> your images.</p>
+<p>It funny to see that one of the things I like the most in photography is so far from what I'm doing in my day job: instant photography.</p>
+<h1>Re-introducing the Polaroid 1000</h1>
+<p>One day, I've had the chance to find my dad's <a href="http://www.google.com/search?q=polaroid+1000&amp;tbm=isch">polaroid 1000</a> camera and since then I've always wanted to make it work and have a few instant polaroids developed with it.</p>
+<p>What was nearly impossible a few years ago if you were not one of those crazy lucky guys to have stored your old polaroid films in perfect condition in your freezer became a reality thanks to <a href="http://www.the-impossible-project.com">The Impossible Project</a>.</p>
+<p>Those guys managed to produce polaroid films from scratch (you can read the whole story <a href="http://www.the-impossible-project.com/about">here</a>) allowing me to revive this sexy little polaroid 1000 of mine.</p>
+<p>It's sure that the film is not cheap at all (count 24 USD for 8 pictures) and that taking a good picture is incredibly difficult in this try-fail-and-try-again world of digital photography, but the reward is so enormous when you manage to take a shot that is well lit, well composed and properly focused that you quickly forget that it cost you 3 USD.</p>
+<h1>Diana F+ &amp; Fuji Instax = Instant Lomography</h1>
+<p>In the quest of eventually finding a cheaper alternative to the costly polaroid 1000 films, I found that <a href="http://www.lomography.com">Lomography</a> was editing an accessory for the popular Diana F+ camera that allowed it to take instant pictures using Fuji Instax films.</p>
+<p>The <a href="http://www.google.com/search?q=diana+instant+back&amp;tbm=isch">end result</a> is pretty <em>unexpected</em> but it has a killer look, and when you master it, you can take pretty awesome shots.</p>
+<p>It has an advantage over the Polaroid 1000 camera, that you can control the aperture, the focus and the exposure time which allows you to do pretty cool things.</p>
+<p>The main differences concern both the size of the shots (Fuji Instax are credit-card size while Polaroid 1000 are almost two times bigger) and the colors which are pretty different between the two films.</p>
+<h1>Conclusion</h1>
+<p>I love so much those two cameras than I can't travel without them. I usually bring them in my bag as well as 1 film pack for the Polaroid 1000 and 2 or 3 film packs of Fuji Instax in addition to my <em>classic</em> digital camera.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Splitting apples</title>
+        <link href="http://engineeredmanager.com/splitapple.html" />
+        <id>urn:uuid:ac540fc0-8e31-3edb-b3d7-3bdccd95e7fd</id>
+        <updated>2013-07-28T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p><em>The opinions expressed herein are my own and do not represent my (ex-)employer’s views in any way. Nothing posted here should be considered official or sanctioned by my (ex-)employer or any other organization I’m affiliated with.</em></p>
+<h1>The idea</h1>
+<p>The idea of doing an archery game on iOS came while <a href="https://wikipedia.org/wiki/MKO_Games">MKO Games</a> was under administration. We were announced that the company would have to lay off a great amount of employees so the motivation was not at its best, to say the least.</p>
+<p>Some of the employees started to look for a new job, others were playing games they didn't have time to finish during the year and others were working on side projects.</p>
+<p>This is how <a href="https://wikipedia.org/wiki/SplitApple">SplitApple</a> started.</p>
+<p>The goal was to do a game that could be developed by a two-guys army, one programmer and one artist. The game had to be simple enough to allow one programmer to do all the coding (engine + gameplay included) and include few enough environments that one artist only could do all the modeling and the texturing.</p>
+<p>After the two-thirds of the company <em>left</em>, we started to work on a few projects, including <a href="http://wikipedia.org/wiki/Skyland_SSR">Skyland SSR</a>, a really bad game based on the <a href="http://wikipedia.org/wiki/Skyland">Skyland</a> animated series. During this time, the development of SplitApple was put on hold.</p>
+<h1>The development</h1>
+<p>The development of SplitApple really started on January 2011 after one of the two people (the programmer) left the company. The artist submitted the idea of assigning a team on SplitApple and finishing what they both started.</p>
+<p>That's when I started to work on this project.</p>
+<p>I started from zero, re-implementing the early prototype in our in-house game engine O2. With the exception of the necessary bindings with the engine, which were done in C++, the whole game was actually done in <a href="http://www.lua.org">LUA</a> with an heavy use of the state machine pattern and the <a href="./archives.html#components">entity/component architecture</a>.</p>
+<p>Only a few months after the start, the project was submitted and the version 1.0 was released on the AppStore.</p>
+<h1>The marketing</h1>
+<p>I never really understood why, but it seemed to me that the company didn't try to push the game as far as possible.</p>
+<p>Nobody seemed to care that the game didn't have a dedicated Twitter account to communicate with the customers, to tease future updates and do other <em>marketing sutff</em>, so I created one (<a href="https://twitter.com/@split_apple">@split_apple</a>).</p>
+<p>Nobody really cared that neither the company nor the game had a Wikipedia page, so I created and updated them <em>(this is actually a shame if you consider that googling for <a href="http://www.google.com/search?q=mko+games">MKO Games</a> or <a href="http://www.google.com/search?q=splitapple">SplitApple</a> actually returns the Wikipedia page in the few first results)</em>.</p>
+<p>People seemed to enjoy the game. We had good reviews and good feedbacks from the various blogs. People were saying good things, but we didn't really used it, so I added those mentions on the Wikipedia page, probably violating a few rules in the process.</p>
+<p>In the end, it didn't worked as bad as initially expected, and the game managed to be ranked 1st of the french AppStore during one full week. According to the analytics, the game has <strong>1.3 million unique users</strong> and was <strong>launched around 12 million times</strong> on people's iOS' devices which is something we can be proud of.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>virtualenv + SublimeText</title>
+        <link href="http://engineeredmanager.com/virtualenv.html" />
+        <id>urn:uuid:e6bd850b-45f4-3008-9ac7-4039a19cd23c</id>
+        <updated>2013-07-04T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>When programming in python, it's a good practice to use <a href="http://www.virtualenv.org">virtualenv</a> to clearly separate the dependencies between different projects. However, it's not always straightforward to integrate <em>virtualenv</em> within your current workflow.</p>
+<p>I like to code using <a href="http://www.sublimetext.com">SublimeText2</a> because it fits my needs to have both a powerful code editor, and a simple text editor to write markdown, but hitting <em>ctrl + shift + b</em> while editing a python file will execute it using the python install that comes first in your $PATH environment variable, which is obviously not what you want.</p>
+<p>A good way to integrate <em>virtualenv</em> with a <em>SublimeText2</em> is to create a project file that contains a custom build system that will run your scripts using your <em>virtualenv</em>'s python.</p>
+<pre><code>{
+  "folders":
+  [
+    {
+      "name": "Project",
+      "path": "."
+    }
+  ],
+  "build_systems":
+  [
+    {
+      "name": "Python virtualenv",
+      "selector": "source.python",
+      "cmd": ["$project_path/env/bin/python", "-u", "$file"]
+    }
+  ]
+}
+</code></pre>
+<p>That's it.</p>
+<p>Your script will now be executed with whatever python version you used to create your virtual environment.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Parameters' validation</title>
+        <link href="http://engineeredmanager.com/parameters.html" />
+        <id>urn:uuid:7668e2d9-9546-3c04-8b3e-d9340904d489</id>
+        <updated>2013-06-17T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>In a large scale application, you often use some kind of <a href="http://wikipedia.org/wiki/Defensive_programming">defensive programming</a> techniques such as <a href="http://wikipedia.org/wiki/Secure_input_and_output_handling#Input_validation">input validation</a> to ensure that your method can run correctly and produce the desired output.</p>
+<p>This simple random bit of code provides you a clean and elegant way of validating that your collections are neither null nor empty.</p>
+<p>Bonus: It also works with strings.</p>
+<h1>Before</h1>
+<pre><code>MyClassConstructor(string name, IEnumerable&lt;int&gt; values)
+{
+  if (string.IsNullOrEmpty(name))
+  {
+    throw new ArgumentNullException("name");
+  }
+
+  if (values == null || values.Any() == false)
+  {
+     throw new ArgumentNullException("values");
+  }
+}
+</code></pre>
+<h1>The bit</h1>
+<pre><code>public static class Extensions
+{
+   public static bool IsNullOrEmpty&lt;T&gt;(this IEnumerable&lt;T&gt; collection)
+   {
+      return collection == null || collection.Any() == false;
+   }
+}
+</code></pre>
+<h1>After</h1>
+<pre><code>MyClassConstructor(string name, IEnumerable&lt;int&gt; values)
+{
+  if (name.IsNullOrEmpty())
+  {
+    throw new ArgumentNullException("name");
+  }
+
+  if (values.IsNullOrEmpty())
+  {
+     throw new ArgumentNullException("values");
+  }
+}
+</code></pre>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Event tester</title>
+        <link href="http://engineeredmanager.com/eventtester.html" />
+        <id>urn:uuid:ea107568-78e2-3a3f-8612-b24f8df14de1</id>
+        <updated>2013-04-06T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>Everybody agrees that writing unit tests is good for your application.
+You often need to test that an event has been raised or not.</p>
+<p>Your mocking framework probably offers you a way to check if some method has been called which can be used to test your events (<a href="http://code.google.com/p/moq">Moq</a> provides such a mechanism at least), or you can go for a full-manual solution.</p>
+<p>But there always comes a moment where you have to test an asynchronous event, and generally you have to introduce things like ManualResetEvents finally ending up with two different ways of testing your events.</p>
+<h1>Before</h1>
+<p>Testing a synchronous event:</p>
+<pre><code>[Test]
+public void TestEventRaised()
+{
+  bool hasBeenRaised = false;
+
+  var testObject = new TestObject();
+
+  testObject.Event += () =&gt; hasBeenRaised = true;
+  testObject.DoSomething();
+
+  Assert.IsTrue(hasBeenRaised);
+}
+</code></pre>
+<p>Testing an asynchronous event:</p>
+<pre><code>[Test]
+public void TestEventRaised()
+{
+  ManualResetEvent resetEvent = new ManualResetEvent();
+
+  var testObject = new TestObject();
+
+  testObject.Event += () =&gt; resetEvent.Set();
+  testObject.DoSomething();
+
+  Assert.IsTrue(resetEvent.WaitOne(1000));
+}
+</code></pre>
+<h1>The bit</h1>
+<p>Here comes the EventTester and the AsyncEventTester classes that lets you write your unit tests the same way whether your events are asynchronous or not.</p>
+<p>The trick here is to implement a few templated OnEventRaised methods that will match your event's signatures.</p>
+<pre><code>public void OnEventRaised&lt;T1&gt;(T1 a1);
+public void OnEventRaised&lt;T1, T2&gt;(T1 a1, T2 a2);
+public void OnEventRaised&lt;T1, T2, T3&gt;(T1 a1, T2 a2, T3 a3);
+
+public T OnEventRaised&lt;T, T1&gt;(T1 a1);
+public T OnEventRaised&lt;T, T1, T2&gt;(T1 a1, T2 a2);
+public T OnEventRaised&lt;T, T1, T2, T3&gt;(T1 a1, T2 a2, T3 a3);
+</code></pre>
+<h1>After</h1>
+<p>Now you can use the same construct for both synchronous and asynchronous events:</p>
+<pre><code>[Test]
+public void TestEventRaised()
+{
+  EventTester eventTester = new EventTester();
+  // AsyncEventTester eventTester = new AsyncEventTester();
+
+  var testObject = new TestObject();
+
+  testObject.Event += eventTester.OnEventRaised;
+  testObject.DoSomething();
+
+  eventTester.Verify();
+}
+</code></pre>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Safe LinQ queries</title>
+        <link href="http://engineeredmanager.com/safe.html" />
+        <id>urn:uuid:ac2cec68-bf52-361c-816e-6f0993e9c426</id>
+        <updated>2013-02-20T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>In my quest of <a href="./minimalism.html">minimalism</a> I always try to find elegant solutions to common issues that I face every day.</p>
+<p>This time, it's all about simplifying your linQ queries to a much more elegant form.</p>
+<h1>Before</h1>
+<p>Your code could look like this:</p>
+<pre><code>if (values != null)
+{
+  var result = values.Select(r =&gt; r.Value);
+}
+else
+{
+  // do stuff
+}
+</code></pre>
+<p>or maybe like that:</p>
+<pre><code>var result = values != null
+  ? values.Select(r =&gt; r.Value)
+  : Enumerable.Empty&lt;object&gt;();
+</code></pre>
+<h1>The bit</h1>
+<pre><code>public static IEnumerable&lt;T&gt; EmptyIfNull&lt;T&gt;(this IEnumerable&lt;T&gt; collection)
+{
+  return collection ?? Enumerable.Empty&lt;T&gt;();
+}
+</code></pre>
+<h1>After</h1>
+<pre><code>var result = values.EmptyIfNull().Select(r =&gt; r.Value);
+</code></pre>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Minimalism</title>
+        <link href="http://engineeredmanager.com/minimalism.html" />
+        <id>urn:uuid:7077c66f-07f5-3162-87eb-99eff450e639</id>
+        <updated>2012-12-10T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>A famous quote from <a href="http://wikipedia.org/wiki/Antoine_de_Saint-Exupéry">Antoine de Saint-Exupéry</a> says that:</p>
+<blockquote>
+<p>A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.</p>
+</blockquote>
+<p>If the implication of minimalism in art is rather obvious, I've been liking the idea of trying to find minimalism in my everyday life, and especially in coding.</p>
+<p>Let me share a few examples with you.</p>
+<h1>Minimalism in design</h1>
+<p>The first example is the one that is right in front of your eyes.</p>
+<p>While building this <a href="./about.html">this website</a>, I've tried to keep everything as small and minimalist as possible, starting with the script that generates it.
+The python script is about 150 lines (plus a few external files) and goes through all the articles and generates the website, renders the templates and generate the atom feed.</p>
+<p>Writing new articles is only a matter of creating a new <a href="http://wikipedia.org/wiki/Markdown">Markdown</a> file containing a <a href="http://wikipedia.org/wiki/YAML">Yaml</a> header.</p>
+<p>If I want to re-generate the whole website, I only hit ctrl + shit + B in my <a href="http://www.sublimetext.com">text editor</a> and the python script does all the job.</p>
+<p>If I need to backup the website, a small .zip archive will easily do the job.</p>
+<p>Having a static website is not only cool when you edit it, but it's also very easy to publish.
+Any web server will do the job.
+You can even <em>publish</em> your website using Dropbox and something like <a href="http://www.site44.com">site 44</a>.</p>
+<p>The HTML and the CSS has also been kept to their minimalistic state:
+Very few colors (currently it could also be summed up to a few shades of gray + a hint color) and as few HTML tags as possible.</p>
+<h1>Minimalism in tools</h1>
+<p>Since a few years, I've also been interested in finding minimalism in the tools I use.</p>
+<p>During the first year of my computer science degree, we learned the C language using only <a href="http://wikipedia.org/wiki/Emacs">Emacs</a> and <a href="http://wikipedia.org/wiki/Make_(software)">makefiles</a> and while at school, you were authorized to read your emails / newsgroup only if you used <a href="http://wikipedia.org/wiki/Pine_(email_client)">pine</a> or <a href="http://wikipedia.org/wiki/Mutt_(email_client)">mutt</a>.</p>
+<p>No graphical user interface allowed.</p>
+<p>Like most of us, I started using Visual Studio at the end of the scholarship. The first time I used it, it actually felt so powerful: projects, code completion, no more makefile writing. The paradise.</p>
+<p>One day I stumbled upon <a href="http://www.charlespetzold.com/etc/doesvisualstudiorotthemind.html">this article</a> and I really liked the whole concept even if I didn't fully understand what it was talking about (I was still discovering Visual Studio features like IntelliSense or the debugger).
+I eventually kept the last paragraph about "The Pure Pleasures of Pure Coding" somewhere in my head and for me and this concept started to make it's comeback a few months / years ago.</p>
+<p>After having used Visual Studio in a professional environment for a while with all the integrated tools like <em>better-IntelliSense-this</em>, <em>great-unit-test-framework-that</em> and having experienced <em>lag</em> while typing your code (yes, using Resharper makes your text editor lag), you really value the beauty and simplicity of a well designed code or text editor.</p>
+<p>Coming back to Emacs or Vim was a bit hard, especially in a windows environment, so I started to look at great alternatives.
+That's when I started to use <a href="http://wikipedia.org/wiki/SciTE">SCite</a>. I really appreciated the simplicity of the interface, without dropping powerful features and ease of use.
+I recently switched to <a href="http://www.sublimetext.com">SublimeText2</a> which is as powerful as SCite, and is packed with great integrated themes, a distraction-free mode, and a fancy the minimap.</p>
+<h1>Minimalist implementations</h1>
+<p>When I started my journey as a programmer I loved to write my C code as compact as possible.
+I wasn't helped by the constraint we had at school that was called <em>the norm</em> and that was automatically checked with a script:</p>
+<ul>
+<li>functions had to be less than 25 lines of code</li>
+<li>lines couldn't be more than 80 characters</li>
+<li>files had to contain a maximum of 5 public functions (you could go to 10 functions if they where static)</li>
+</ul>
+<p>Of course we slightly missed the point of even having a <em>norm</em> but a few years later, we realized that it should have led us to try to achieve better responsibility separation, and clearly splitting code between files.</p>
+<p>It was fun to write those very compact C functions at first, but an awful pain when you wanted to read your code a few weeks or months later.
+Those 1 letter variables were definitely not a good idea.</p>
+<h1>Closing thoughts</h1>
+<p>You've probably already heard this quote from "<a href="http://wikipedia.org/wiki/The_Elements_of_Programming_Style">The Elements of Programming Style</a>" by <a href="http://wikipedia.org/wiki/Brian_Kernighan">Kernighan</a> and Plauger:</p>
+<blockquote>
+<p>Don't comment bad code, rewrite it</p>
+</blockquote>
+<p>As true as it is, I found a principle that perfectly fits my state of mind while writing code:</p>
+<blockquote>
+<p>Write code in a way that the next person reading it will say: "I wouldn't have done better".</p>
+</blockquote>
+<p>Following this mantra has helped me write simpler, cleaner and more direct code, and I think that this is the true way of minimalism.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Entities</title>
+        <link href="http://engineeredmanager.com/entities.html" />
+        <id>urn:uuid:75146160-c382-3078-9d03-d536673879f8</id>
+        <updated>2012-12-09T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>This is the second article about an Entity / Component proof of concept I've been developing.
+If you haven't done it already, I suggest you read the article about <a href="./components.html">Components</a> before reading this one.</p>
+<p>Entities shouldn't be more complicated than components.
+They actually just provide a logical way of regrouping components.</p>
+<p>They are implemented as python dictionaries and created using a factory method:</p>
+<pre><code>def Entity(ID = uuid.uuid4()):
+    return {
+        'ID': ID,
+    }
+
+&gt;&gt;&gt; e = Entity()
+&gt;&gt;&gt; pprint(e)
+{
+    'ID': UUID('fc9f593d-9b99-4eba-abd6-a2309bbb84f0')
+}
+</code></pre>
+<p>Attaching a component is easy:</p>
+<pre><code>&gt;&gt;&gt; p = Position()
+&gt;&gt;&gt; attach(e, p)
+&gt;&gt;&gt; pprint(e)
+{
+    'ID': UUID('fc9f593d-9b99-4eba-abd6-a2309bbb84f0'),
+    'components': {
+        '__main__::Position': [
+            {'_type': 'Module::Position', 'x': 0.0, 'y': 0.0, 'z': 0.0}
+        ]
+    }
+}
+</code></pre>
+<p>Detaching is simple as well:</p>
+<pre><code>&gt;&gt;&gt; detach(e, p)
+&gt;&gt;&gt; pprint(e)
+{
+    'ID': UUID('fc9f593d-9b99-4eba-abd6-a2309bbb84f0'),
+    'components': {
+        'Module::Position': []
+    }
+}
+</code></pre>
+<p>To keep good performances when attaching and detaching lot of components, cleanup is left to another function that can be called at the end of the update:</p>
+<pre><code>&gt;&gt;&gt; cleanup(e)
+&gt;&gt;&gt; pprint(e)
+{
+    'ID': UUID('fc9f593d-9b99-4eba-abd6-a2309bbb84f0')
+}
+</code></pre>
+<p>There's no restriction concerning the number of components of the same type you can attach to an entity.
+As previously said, entities are just bags of components and they don't have any logic.</p>
+<p>Since entities and components both are simple dictionaries, they can be serialized and unserialized easily.</p>
+<p>In the next <a href="./systems.html">entry</a>, I talk about <em>systems</em>.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Components</title>
+        <link href="http://engineeredmanager.com/components.html" />
+        <id>urn:uuid:2605cf64-c6b3-344d-8c86-e8da2fe71742</id>
+        <updated>2012-12-08T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>Entity-components systems seem to have been around for a few years now.
+I remember debating about it with co-workers back in 2007 and they were nothing new.
+For a long time, classic engines where inheritance-based and used complicated object oriented design to fulfill their needs.
+But it seems that the trend has quickly evolved in favor of Entities / Components architectures which allows for better code and data separation as well as better component re-usability.</p>
+<p>Let me share a few details about how the components are implemented in a proof of concept I've been developing as a pet project.
+I've tried to keep the design as <a href="./minimalism.html">minimalist</a> as possible.</p>
+<p>There can be potentially a great number of components running at the same time during the application's lifetime, so they must be very simple and lightweight.
+They are implemented using built-in python dictionaries and created by a factory method:</p>
+<pre><code>def Position(x = 0.0, y = 0.0, z = 0.0):
+    return {
+        'x': x,
+        'y': y,
+        'z': z
+    }
+
+&gt;&gt;&gt; p = Position()
+{'x': 0.0, 'y': 0.0, 'z': 0.0}
+</code></pre>
+<p>A decorator is used to add internal attributes to components such as their types:</p>
+<pre><code>@Component
+def Position(x = 0.0, y = 0.0, z = 0.0):
+    return {
+        'x': x,
+        'y': y,
+        'z': z
+    }
+
+&gt;&gt;&gt; p = Position()
+{'_type': 'Module::Position', 'x': 0.0, 'y': 0.0, 'z': 0.0}
+</code></pre>
+<p>And here is the decorator used to create components:</p>
+<pre><code>class Component(object):
+    def __init__(self, f):
+        self.f = f
+
+    def __call__(self, *args):
+        c = self.f(*args)
+        c['_type'] = '{0}::{1}'.format(self.f.__module__, self.f.__name__)
+        return c
+</code></pre>
+<p>In the next <a href="./entities.html">entry</a>, I introduce the entities, which are basically just bags of components.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Generating names using Markov chains</title>
+        <link href="http://engineeredmanager.com/markov.html" />
+        <id>urn:uuid:a6c0b28a-1b36-36a1-b75c-4b8776e1674f</id>
+        <updated>2012-11-15T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>I've always been interested in procedural generation.
+It's the kind of computer sciences area that makes you think that everything is possible without investing to much time on building assets.</p>
+<p>Random name generation is probably the most intuitive and easiest way to start.</p>
+<p>You will probably find countless random name generators using <a href="https://wikipedia.org/wiki/Markov_chain">Markov chains</a> or other techniques, anyways, here's another one... :)</p>
+<h1>Introduction to Markov chains</h1>
+<p>Citing wikipedia:</p>
+<blockquote>
+<p>A Markov chain, named after Andrey Markov, is a mathematical system that undergoes transitions from one state to another, between a finite or countable number of possible states. It is a random process usually characterized as memoryless: the next state depends only on the current state and not on the sequence of events that preceded it. This specific kind of "memorylessness" is called the Markov property.</p>
+</blockquote>
+<p>The thing about Markov chains is that they are very simple to implement, and you have a nice result very quickly.</p>
+<h1>Feeding the beast</h1>
+<p>Markov chains are great at generating names that sound real because they are based on real data.
+The best way to start is to feed the program with a huge list of real world words, like common first names, god names, or town names for example.
+The more words, the better.</p>
+<p>Internally, the program uses a transition table to generate the names.
+This is the transition table for the name "John":</p>
+<pre><code>{
+    None: ['jo'],
+    'jo': ['h'],
+    'oh': ['n'],
+    'hn': [None]
+}
+</code></pre>
+<p>The word is sliced in group of 2 letters:</p>
+<pre><code>[ "jo", "oh", "hn" ]
+</code></pre>
+<p>and each of this group gets a transition to the letter right next to it.
+The "None" values indicate the start and the beginning transitions.</p>
+<p>If you add "Joseph" as a second word to the transitions table, it would be sliced in:</p>
+<pre><code>[ "jo", "os", "se", "ep", "ph" ]
+</code></pre>
+<p>and the updated transition table would be:</p>
+<pre><code>{
+    None: ['jo', 'jo'],
+    'jo': ['h', 's'],
+    'oh': ['n'],
+    'hn': [None],
+    'os': ['e'],
+    'se': ['p'],
+    'ep': ['h'],
+    'ph': [None]
+}
+</code></pre>
+<p>There are now two ways of starting the chain, though they are the same, "jo" and "jo", as well as two ways of ending the chain, "hn" and "ph".</p>
+<h1>Generating names</h1>
+<p>Given the previous transition table, starting to generate a random name will look like this:</p>
+<ul>
+<li>Select a random starting transition between "jo" and "jo". The word is <strong>"jo"</strong>.</li>
+<li>From "jo", select the next transition between "h" and "s". The word could either be "jos" or "joh". Let's say it picked <strong>"jos"</strong>.</li>
+<li>From "os", select the next transition. No choice here so it gives <strong>"jose"</strong>.</li>
+<li>Proceed until you pick an end transition. You will now have your word <strong>"joseph"</strong>.</li>
+</ul>
+<p>Simple.</p>
+<p>You can control the output by providing a maximum lenght to prevent generated names to be too long.
+The more you will encounter a transition when parsing the names, the more it's likely to be picked when generating a random word.
+The main thing here is to provide a big enough list so that random generated names will <em>sound</em> like the names in the list.</p>
+<p>Given a list that contains the names of gods from different origins, running the algorithm 10 times gives:</p>
+<ul>
+<li>Wakaman</li>
+<li>Midhrbogdo</li>
+<li>Taizokamma</li>
+<li>Myr</li>
+<li>Jun</li>
+<li>Hodlun</li>
+<li>Kolano-gi</li>
+<li>Machine</li>
+<li>Sar'e</li>
+<li>Avar-ko-ka</li>
+</ul>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Becoming a notebook geek</title>
+        <link href="http://engineeredmanager.com/notebooks.html" />
+        <id>urn:uuid:d299a7d4-d9bd-36d9-afd2-f2043f260c69</id>
+        <updated>2012-11-14T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>A few months ago, I started to think about how I could improve my creative workflow.
+Probably like everybody, I have a lot of ideas going through my head that I loose because I don't write them down in time.</p>
+<p>I started to think of a way of fixing that and see what would happen with all those ideas and the first step to stop loosing my ideas was to figure out a way write them down that would work the best for me.</p>
+<p>I tried to take a few notes using dedicated applications on my smartphone, but it quickly became very annoying because there were no easy way to review them in an ergonomic and optimized fashion.</p>
+<p>That's when I switched to paper.
+I used to write things and draw a few doodles mostly at work while trying to find solutions to various problems, but I never really carried something with me to write quick notes on the go.
+I wanted to give it a try and bought several notebooks until I found the setup that fulfilled my needs. In a matter of weeks, I became addicted with nice looking pocket sized notebooks.</p>
+<p>As to deciding what to write in them, I classified my ideas in 2 categories.</p>
+<h1>1 line ideas</h1>
+<p>It can be anywhere, anytime.
+They usually come as fast as they leave, and if you're not prepared, they're gone forever; so I catch them in a pocket notebook with a flexible cover that I can keep with me all the time.</p>
+<p>Writing a 1 line idea in my flexible notebook is a matter of seconds.
+Easy and simple.</p>
+<h1>1 page ideas</h1>
+<p>Those are wandering in your head for hours, day or weeks and writing them somwhere allows your brain to move on something else.</p>
+<p>I bought a dedicated pocket notebook with a hard cover and a lot more pages in which I try to follow the pattern <strong>1 page == 1 idea</strong>.
+If I need to add details about an idea or if an idea is directly related to another, I simply add a reference to another page.</p>
+<p>This is also a very simple way to track the number of ideas I've stored in it.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>About</title>
+        <link href="http://engineeredmanager.com/about.html" />
+        <id>urn:uuid:540f675a-4700-3977-a320-d4aba24fd85a</id>
+        <updated>2012-11-09T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>This is probably the place that should host a full auto-biography, but I don't feel old or important enough to write one.</p>
+<p>However, this weblog is a collection of thoughts or technical notes about what I love the most (besides my wife):</p>
+<ul>
+<li><a href="./archives.html#programming">programming</a></li>
+<li><a href="./archives.html#gaming">gaming</a></li>
+<li><a href="./archives.html#photography">photography</a></li>
+</ul>
+<p>If you're curious to know how this website is done under the hood you will find more details <a href="./underthehood.html">here</a>.</p>
+<p>If you still want to read a few details about my work, it's right after the break.</p>
+<h1>Into the work world</h1>
+<p>I started my career at <a href="http://wikipedia.org/wiki/MKO_Games">MKO Games</a>, a video game company that, strangely enough, never really had a real website, by coding a few gameplay prototypes for <em>what should have been</em> a next generation online 3D casino game.</p>
+<p>Then I integrated the tools development team and participated in developing the software that was used for all our game design and game prototyping needs. The tool was built in C# / WinForms, with a splash of C++ CLI for the bindings with the <a href="http://www.gamebryo.com/">engine</a>.</p>
+<p>This tool was used on the production of <em>what should have been</em> a game based on the universe of <a href="http://wikipedia.org/wiki/Skyland">Skyland</a> (the production was eventually canceled after a few years) and <em>what should have been</em> a game base on the story of the <a href="http://wikipedia.org/wiki/The_Little_Prince">Little Prince</a> (this project was also canceled after a few years).</p>
+<p>After having canceled all the main projects, the company was put under administration and forced to lay off two-thirds of the employees. That's when I started to work on an archery game, <a href="http://wikipedia.org/wiki/SplitApple">SplitApple</a>, and a darts throwing game, <a href="http://wikipedia.org/wiki/T-80_Darts">T-80 Darts</a>, both for iOS. Those games were developed using an in-house C++ engine called O2 and entirely written using the LUA bindings.</p>
+<p>Those were the best years at MKO Games. We worked hard, we invented things to solve the issues we had, and at the end, it worked pretty well. We also played a lot of Starcraft II which provided endless discussions during the coffee breaks.</p>
+<p>But this didn't last very long: the company definitely closed in march 2012 during the development of <em>what should have been</em> (notice the patterns?) a game based on the animated series about <a href="http://wikipedia.org/wiki/Le_petit_Nicolas">Le Petit Nicolas</a>.</p>
+<h1>Welcome to the real world</h1>
+<p>I then the video games' world to work at <a href="http://dxo.com">DxO Labs</a>, a company that deals with image quality.</p>
+<p>I've been part of the team that develops the Windows version of <a href="http://www.dxo.com/intl/photography/dxo-optics-pro">Optics Pro</a>, a software that enhances the quality of your digital pictures, whether they were taken with the latest pro camera in town or with a more affordable camera or smartphone. The software is built in C# / WPF and once again a splash of C++ CLI for the bindings with the internal image correction engine.</p>
+<p>In addition to everything else, I designed multiple key parts like the background threading and synchronization, the caching mechanism and the export (to facebook, lightroom, image applications or disk) plug-in system.</p>
+<h1>That sounds good</h1>
+<p>After having participated to the development and the releases of OpticsPro 8, 9 and 10, I've left the company to work at <a href="https://en.wikipedia.org/wiki/Deezer">Deezer</a>'s Windows related clients (<a href="http://www.windowsphone.com/en-us/store/app/deezer/abf78126-7301-e011-9264-00237de2db9e">Windows phone</a> and <a href="http://apps.microsoft.com/windows/en/app/deezer/e48b595e-b20a-4eb3-968c-c20b2cadaa1e/m/row">Windows</a>).</p>
+<p>That's the story so far.</p>
+			</div>
+		</content>
+    </entry>
+    
+    <entry>
+        <title>Under the hood</title>
+        <link href="http://engineeredmanager.com/underthehood.html" />
+        <id>urn:uuid:ed47846c-7310-3245-9adb-9c3970b005bf</id>
+        <updated>2012-11-08T00:00:00Z</updated>
+        <author><name>Ludovic Heyberger</name></author>
+        <content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>When I started this website, I asked myself whether or not I should use a classic blog engine like WordPress or something <em>less brutal</em> that would answer my needs without being overkill.</p>
+<p>During my researches, I stumbled upon <a href="http://jekyllrb.com/">Dr Jekyll</a> and <a href="http://hyde.github.io/">Mr Hyde</a>, two static websites generators. The concept really interested me, so I started to do a little bit more digging in this direction. That's when I found <a href="http://prog21.dadgum.com/">James Hague</a>'s very interesting blog who uses a <a href="http://prog21.dadgum.com/56.html">similar</a> <a href="http://prog21.dadgum.com/77.html">approach</a>.</p>
+<p>I decided to follow the same path: This site is generated by a python script, using a few <a href="http://jinja.pocoo.org/">jinja2</a> templates and a set of <a href="http://sass-lang.com/">sass</a> files for the style.</p>
+<p>As for the posts, they are written using a mix of <a href="http://www.yaml.org/">yaml</a> for the header and <a href="http://daringfireball.net/projects/markdown/">markdown</a> for the content:</p>
+<pre><code>---
+title: Article title
+subtitle: Article subtitle
+date: 09/11/2012
+author: Ludovic Heyberger
+tags: [ list, of, tags ]
+---
+
+Here comes the content, written in **markdown**
+</code></pre>
+<p>The python script is in charge of generating the <a href="./index.html">pages</a>, the <a href="./archives.html">archives</a> and an <a href="./feed.atom">atom feed</a>.</p>
+<p>I love the process and I really like the simplicity.</p>
+			</div>
+		</content>
+    </entry>
+    
+
+</feed>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Systems</title>
+		<!-- <base href="http://engineeredmanager.com/" /> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="prettify/desert.css" />
+		<script type="text/javascript" src="prettify/prettify.js"></script>
+		<link rel="alternate" type="application/atom+xml" href="feed.atom" />
+		<meta name="keywords" content="programming, python, randombits, c#, gaming, components, postmortem, workflow, draft, photography">
+		<meta name="Author" content="Ludovic Heyberger" />
+		<script type="text/javascript">
+			window.onload = function(){var x=document.getElementsByTagName("pre");for(var i=0;i<x.length;i++)
+			{if(x[i].firstChild.nodeName.toLowerCase()=="code"){x[i].className="prettyprint"}}prettyPrint()}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="./index.html">Ludovic's weblog</a></h1>
+			<nav>
+				<ul>
+					<li><a href="./archives.html">Archives</a></li>
+					<li><a href="./about.html">About</a></li>
+					<li><a href="http://fr.linkedin.com/in/lheyberger">Contact</a></li>
+					<li><a href="./feed.atom">Atom</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			
+<article>
+	<header>
+		<h1>Systems</h1>
+		<h2>A lightweight entity-component system - Part 3</h2>
+	</header>
+	<p>This is the third article talking about an Entity / Component proof of concept I've been developing.
+You should probably read the one talking about <a href="./components.html">Components</a> and the one talking about <a href="./entities.html">entities</a> before.</p>
+<p>In an Entity / Component architecture, there's data on one side (entities and components) and <em>code</em> that actually does stuff on the other side.
+One part of that would be the Systems.</p>
+<p>Systems are mainly used to apply changes on a full set of entities like collecting all the Sprites components and drawing them on the screen.
+Typically, systems will be executed by order of priority.</p>
+	<footer>
+		<p>
+			<a href="http://engineeredmanager.com/systems.html">Permalink</a>
+			<time datetime="2013-08-05">August 05, 2013</time>
+			
+		</p>
+		
+		<p>
+			<a href="archives.html#draft">draft</a> <a href="archives.html#programming">programming</a> <a href="archives.html#python">python</a> <a href="archives.html#components">components</a>
+		</p>
+		
+		
+		<nav>
+			<h1>Previous posts</h1>
+			<ul>
+			
+				<li><a href="darts.html">Throwing darts</a></li>
+			
+				<li><a href="instant.html">Going instant</a></li>
+			
+				<li><a href="splitapple.html">Splitting apples</a></li>
+			
+				<li><a href="virtualenv.html">virtualenv + SublimeText</a></li>
+			
+				<li><a href="parameters.html">Parameters' validation</a></li>
+			
+			</ul>
+		</nav>
+		
+	</footer>
+</article>
+
+		</main>
+		<footer><a href="http://fr.linkedin.com/in/lheyberger">Ludovic Heyberger, 2024</a></footer>
+	</body>
+</html>
