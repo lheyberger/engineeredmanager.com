@@ -5,5 +5,10 @@ body {
 		background-color: $light-background;
 		text-align: center;
 		padding: 40px 0;
+
+		h6 {
+			color: $accent-contrast-color;
+			font-size: 0.001em;
+		}
 	}
 }

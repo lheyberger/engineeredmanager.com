@@ -114,6 +114,10 @@ body > footer {
   text-align: center;
   padding: 40px 0;
 }
+body > footer h6 {
+  color: #FCF9F4;
+  font-size: 0.001em;
+}
 
 article:not(:only-of-type) {
   margin: 3em 0;
